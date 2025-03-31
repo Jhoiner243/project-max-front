@@ -42,8 +42,8 @@ const data = {
       icon: LayoutDashboardIcon,
     },
     {
-      title: "Lifecycle",
-      url: "#",
+      title: "Productos",
+      url: "/productos",
       icon: ListIcon,
     },
     {

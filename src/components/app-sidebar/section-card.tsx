@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { TrendingDownIcon, TrendingUpIcon } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"

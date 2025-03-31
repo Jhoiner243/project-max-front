@@ -18,6 +18,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
+import { useFactura } from "../../../facturas/context/factura.context"
 import { useClient } from "../../context/client-context"
 
 
@@ -25,6 +26,7 @@ export function ComboboxClient() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
   const {clients} = useClient()
+  const {addClient} = useFactura()
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -43,7 +45,7 @@ export function ComboboxClient() {
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search framework..." className="h-9" />
+          <CommandInput placeholder="Search client..." className="h-9" />
           <CommandList>
             <CommandEmpty>No clients found.</CommandEmpty>
             <CommandGroup>
@@ -53,6 +55,7 @@ export function ComboboxClient() {
                   value={cliente.name}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue)
+                    addClient(cliente.id)
                     setOpen(false)
                   }}
                 >

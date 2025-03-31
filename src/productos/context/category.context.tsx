@@ -35,7 +35,7 @@ export const ProductoProvider = ({children}: {children: ReactNode}) => {
   )
 }
 
-export const useFactura = () => {
+export const useCategory = () => {
   const context = useContext(ProductoContext)
   if (!context) {
     throw new Error('useFactura must be used within a FacturaProvider')

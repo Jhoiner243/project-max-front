@@ -11,6 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { Link } from "react-router-dom"
 import FacturaDialog from "../../../facturas/components/factura-dialog"
 
 export function NavMain({
@@ -46,7 +47,9 @@ export function NavMain({
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton tooltip={item.title}>
                 {item.icon && <item.icon />}
+              <Link to={item.url}> 
                 <span>{item.title}</span>
+              </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}

@@ -1,17 +1,21 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { SidebarProvider } from "@/components/ui/sidebar"
-import { Outlet } from "react-router-dom"
+import { ToastProvider } from "@radix-ui/react-toast"
+import { Toaster } from "sonner"
 import { ThemeProvider } from "../components/ui/theme-provider"
 import SidebarPage from "../pages/sidebar/page"
 
 export default function Layout() {
   return (
     <ThemeProvider defaultTheme="dark">
+      <ToastProvider>
     <SidebarProvider>
       <SidebarPage />
       <main>
-        <Outlet/>
+        <Toaster />
       </main>
     </SidebarProvider>
+    </ToastProvider>
     </ThemeProvider>
   )
 }

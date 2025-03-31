@@ -62,7 +62,7 @@ export function facturaReducer(state: FacturasEntity, action: FacturaActionType)
 export default function useFacturaHook() {
   const [cantidad, setCantidad] = useState<number | undefined>(undefined)
   const [precio, setPrecio] = useState<number | undefined>(undefined)
-  const [selected, setSelected]  = useState('')
+  const [selected, setSelected]  = useState<string>('')
 
 
   return {

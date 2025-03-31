@@ -14,6 +14,26 @@ export default function FormPedido() {
   const [cantidad, setCantidad] = useState<number | undefined>(undefined)
   const [precio, setPrecio] = useState<number | undefined>(undefined)
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    const numericValue = Number(value);
+    switch (name) {
+      case 'cantidad':
+        setCantidad(numericValue);
+        break;
+      case 'precio':
+        setPrecio(numericValue);
+        break;
+      default:
+        console.warn(`Campo no reconocido: ${name}`);
+    }
+  };
+
+    const handleSelect = (id: string) =>{
+        setSelected(id)
+      }
+
+  console.log("Antes: ",selected)
   const handleAgregar = (
     e: React.FormEvent<HTMLFormElement>,) => {
     e.preventDefault()
@@ -25,29 +45,10 @@ export default function FormPedido() {
       })
     }
     setCantidad(0)
-    setSelected('')
+    setSelected(undefined)
     setPrecio(0)
   }
 
-   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        const numericValue = Number(value);
-        switch (name) {
-          case 'cantidad':
-            setCantidad(numericValue);
-            console.log(value);
-            break;
-          case 'precio':
-            setPrecio(numericValue);
-            break;
-          default:
-            console.warn(`Campo no reconocido: ${name}`);
-        }
-      };
-  
-        const handleSelect = (id: string) =>{
-            setSelected(id)
-          }
   return (
         <form className='grid grid-cols-1' onSubmit={handleAgregar}>
           <div className='flex flex-1 items-center gap-3 mb-2'>
@@ -86,7 +87,7 @@ export default function FormPedido() {
                 onChange={handleChange}
               />
             </div>
-            <Button className='flex w-[50%] ml-[27%] transform-[-50%] mt-10 dark:bg-transparent ring ring-amber-50 text-white hover:bg-amber-200 hover:cursor-pointer' type="submit" disabled={!selected || !cantidad || !precio}>
+            <Button variant='outline' className='flex w-[50%] ml-[27%] transform-[-50%] mt-10  hover:bg-amber-200 hover:cursor-pointer' type="submit" disabled={!selected || !cantidad || !precio}>
               Agregar producto
             </Button>
           </div>
